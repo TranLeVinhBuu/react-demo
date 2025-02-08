@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+.todo-image{
+  text-align: center;
+  margin-top: 15px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
