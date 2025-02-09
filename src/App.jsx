@@ -5,7 +5,6 @@ import ReactLogo from './assets/react.svg';
 import React, { useState } from 'react';
 
 
-
 const App = () => {
   const [todoList, setTodoList] = useState([]);
 
