@@ -1,6 +1,10 @@
+import React, { useState } from 'react';
+
 const TodoForm = (props) => {
   // const {addNewTodo} = props;
   // addNewTodo('clowder')
+
+  const [valueInput, setValueInput] = useState('')
 
   const handleClick = () => {
     console.log('clicked')
@@ -8,6 +12,7 @@ const TodoForm = (props) => {
 
   const handleChange = (e) => {
     console.log('handle change', e)
+    setValueInput(e)
   }
 
   return (
@@ -18,6 +23,7 @@ const TodoForm = (props) => {
         style={{cursor: "pointer"}}
         onClick={handleClick}
         >Add</button>
+        <div>{valueInput}</div>
       </div>
   )
 }
