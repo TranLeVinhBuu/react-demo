@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
 const TodoForm = (props) => {
-  // const {addNewTodo} = props;
-  // addNewTodo('clowder')
+  const {addNewTodo} = props;
 
   const [valueInput, setValueInput] = useState('')
 
   const handleClick = () => {
-    console.log('clicked')
+    addNewTodo(valueInput)
   }
 
   const handleChange = (e) => {
