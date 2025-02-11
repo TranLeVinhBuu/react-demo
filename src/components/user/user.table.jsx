@@ -1,13 +1,10 @@
 import { Table } from "antd";
 import { getAllUserApi } from "../../services/api.service";
-import { useEffect } from "react";
+import React from "react";
 
-const UserTable = () => {
-  const [dataUser, setDataUser] = useState([]);
+const UserTable = (props) => {
 
-  useEffect(() => {
-    getAllUser();
-  }, []);
+  const { dataUser } = props;
 
   const columns = [
     {
@@ -47,10 +44,6 @@ const UserTable = () => {
     },
   ];
 
-  const getAllUser = async () => {
-    const res = await getAllUserApi();
-    setDataUser(res.data);
-  };  
   return <Table columns={columns} dataSource={dataUser} />;
 };
 
