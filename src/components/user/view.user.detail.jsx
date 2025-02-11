@@ -1,4 +1,4 @@
-import { Drawer } from "antd";
+import { Button, Drawer } from "antd";
 
 const ViewUserDetail = (props) => {
   const { dataDetail, setDataDetail, isDataDetailOpen, setIsDataDetailOpen } =
@@ -22,6 +22,26 @@ const ViewUserDetail = (props) => {
           <p>Email: {dataDetail.email}</p>
           <br />
           <p>Phone number: {dataDetail.phone}</p>
+          <div>
+            <img
+              height={250}
+              width={300}
+              src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetail.avatar}`}
+            />
+          </div>
+          <div>
+            <label htmlFor="btnUpload" style={{
+                cursor: "pointer",
+                color: "white",
+                display: "block",
+                width: "fit-content",
+                marginTop: "15px",
+                padding: "5px 10px",
+                backgroundColor: "lightblue",
+                borderRadius: "5px",
+            }}>Upload avatar</label>
+            <input type="file" hidden id="btnUpload"></input>
+          </div>
         </>
       ) : (
         <>
