@@ -1,52 +1,26 @@
-import { Space, Table, Tag } from "antd";
+import { Table } from "antd";
+import { getAllUserApi } from "../../services/api.service";
+import { useEffect } from "react";
 
 const UserTable = () => {
+  const [dataUser, setDataUser] = useState([]);
+
+  useEffect(() => {
+    getAllUser();
+  }, []);
+
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      render: (text) => <a>{text}</a>,
+      title: "Id",
+      dataIndex: "id",
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "Full Name",
+      dataIndex: "fullName",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
-    },
-    {
-      title: "Tags",
-      key: "tags",
-      dataIndex: "tags",
-      render: (_, { tags }) => (
-        <>
-          {tags.map((tag) => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
-              color = "volcano";
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
-      ),
-    },
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-          <a>Invite {record.name}</a>
-          <a>Delete</a>
-        </Space>
-      ),
+      title: "Email",
+      dataIndex: "email",
     },
   ];
   const data = [
@@ -72,7 +46,12 @@ const UserTable = () => {
       tags: ["cool", "teacher"],
     },
   ];
-  return <Table columns={columns} dataSource={data} />;
+
+  const getAllUser = async () => {
+    const res = await getAllUserApi();
+    setDataUser(res.data);
+  };  
+  return <Table columns={columns} dataSource={dataUser} />;
 };
 
 export default UserTable;
